@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  php:
+    build: config/docker/php
+    environment:
+      - PHP_IDE_CONFIG=serverName=projet
+    volumes:
+      - ./:/var/www/projet/:cached # Location of the project for php-fpm. Note this should be the same for NGINX.
+    networks:
+      - projet
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www/projet/:cached # Location of the project for php-fpm. Note this should be the same for NGINX.
+      - ./config/docker/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 10300:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
+    networks:
+      - projet
+
+  db:
+    image: mariadb
+    ports:
+      - 3310:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - projet
+
+networks:
+  projet:
+
+volumes:
+  mysql-data:
