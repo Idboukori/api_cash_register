@@ -32,6 +32,11 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="simple_array", length=200)
+     */
+    private $roles;
+
+    /**
      * User constructor.
      * @param $username
      */
@@ -96,12 +101,19 @@ class User implements UserInterface
     }
 
     /**
-     * @return array|string[]
+     * @return (Role|string)[] The user roles
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
 
     public function eraseCredentials()
     {
