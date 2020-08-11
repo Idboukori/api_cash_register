@@ -5,12 +5,18 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-
+use App\Controller\ProductController;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     collectionOperations={
+ *      "get"={"security"="is_granted('ROLE_ADMIN')"},
+ *      "post",
+ *     }
+ * )
  * @ApiFilter(SearchFilter::class, properties={"barcode": "exact"})
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
