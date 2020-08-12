@@ -23,7 +23,9 @@ JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
 JWT_PASSPHRASE= YOUR PASSPHRASE ( Don't forget to replace YOUR PASSPHRASE with yours )  
  
 step 3 : Création user  
-use API Platform : http://localhost:10300/api to create users one admin and one simple user(which will be the cash register) :  
+use an API Testing tool to create users such as Advanced Rest Client : https://install.advancedrestclient.com/install  
+Execute a POST Request using url : http://localhost:10300/register  
+copy on the Body a json like this 2 examples :   
 {  
 "username": "admin",  
 "password": "choose a password",  
