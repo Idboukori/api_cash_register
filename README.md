@@ -7,7 +7,16 @@ $ composer install
 $ php bin/console doctrine:database:create  
 $ php bin/console doctrine:migrations:version --add --all  
 $ php bin/console make:migration  
-$ php bin/console doctrine:migrations:migrate  
+$ php bin/console doctrine:migrations:migrate   
+
+If any problem happened with migrations, try to do this :  
+
+1 - delete existing migrations.  
+2 - change the name of database on env file .  
+3 - then try again this commands :  
+$ php bin/console doctrine:database:create  
+$ php bin/console make:migration  
+$ php bin/console doctrine:migrations:migrate   
 
 ## step 2 : Configuration JWT  
 $ mkdir -p config/jwt  
