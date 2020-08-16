@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     attributes={"security"="is_granted('ROLE_USER')"},
  *     collectionOperations={
  *      "get"={"security"="is_granted('ROLE_ADMIN')"},
- *      "post",
+ *      "post"={"security"="is_granted('ROLE_ADMIN')"},
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"barcode": "exact"})
