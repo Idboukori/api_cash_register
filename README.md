@@ -1,4 +1,16 @@
-# api_cash_register
+# api_cash_register  
+
+REST API that can do:  
+1. Admin: Add a product (properties: barcode, name, cost, vat-class (6% or 21%))  
+2. Admin: List all products  
+3. Cash register: Get a product by barcode  
+4. Cash register: Create a new receipt  
+5. Cash register: Add a product by barcode to the receipt  
+6. Cash register: Change the amount of the last product on the receipt  
+7. Cash register: Finish a receipt  
+8. Cash register: Get the receipt, including all product names grouped, amount of that product,
+costs per row and total, and total vat per class
+  
 ## step 1 : run commands
 docker-compose up --build  
 docker ps  
